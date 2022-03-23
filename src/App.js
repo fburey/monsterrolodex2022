@@ -8,9 +8,11 @@ class App extends Component {
     super();
 
     this.state = {monsters:[],};
+    console.log('1 Constructor');
   }
 
   componentDidMount(){
+    console.log('3 componentDidMount');
     fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
     .then((users) => this.setState(() => {
@@ -19,9 +21,11 @@ class App extends Component {
     () => {
       console.log(this.state);
     }));
+
   }
 
   render() {
+    console.log('2 Render');
     return (
       <div className="App">
         {this.state.monsters.map((monster)=>{
