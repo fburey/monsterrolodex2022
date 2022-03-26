@@ -2,10 +2,14 @@ import { Component } from "react";
 
 class CardList extends Component{
     render(){
+        console.log('render CardList');
+        const {monsters} = this.props;
         return(
             <div>
-                <h1></h1>
-                Hello I´m the CardList Component
+            {monsters.map((monster)=>(
+                        <h1 key={monster.id}>{monster.name}</h1>
+                    ))}
+                {/* <h1>Hello I´m the CardList Component</h1> */}
             </div>
         )
     }
