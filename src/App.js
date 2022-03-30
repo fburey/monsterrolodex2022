@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.log('componentDidMount from App'); 
     fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
     .then((users) => this.setState(() => {
@@ -42,6 +41,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1 className="app-title">Monster Rolodex</h1>
         <SearchBox
         className = 'monsters-search-box'
         placeholder = 'search monsters'
