@@ -9,19 +9,26 @@ const App = () => {
   const [monsters, setMonsters] = useState([]); 
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
 
+  console.log('render');
+  // Que los datos se cargen una vez
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
-    .then((users) => setMonsters(users));
+    .then((users) => {
+      setMonsters(users);
+      console.log('effect in monsters');
+    });
   },[]);
 
+  //Que los datos de los monsters filtrados se actualice
+  // cuando el campo de busqueda cambien o cuando
+  // monsters cambie.
   useEffect(() => {
     const newFilteredMonsters = monsters.filter((item) => {
       return item.name.toLowerCase().includes(searchField);
     });
-    
     setFilteredMonsters(newFilteredMonsters);
-    console.log('effect is firing');
+    console.log('effect in newFilteredMonsters');
   },[monsters, searchField]);
 
   const onSearchChange = (event) => {
